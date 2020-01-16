@@ -22,3 +22,8 @@ edit the following:
 
 - add: "jsx": "react"
 - add: "moduleResolution": "node"
+  etc... (mostly was based on Martins Bohgard's file)
+
+## Add .gitignore
+
+copy one form internets about typescript/react/webapp
