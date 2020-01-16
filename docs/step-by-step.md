@@ -30,4 +30,11 @@ copy one form internets about typescript/react/webapp
 
 ## Add tslint and prettier
 
-- add `tslint.json`
+```
+yarn add tslint prettier --dev
+
+```
+
+- add a `tslint.json` (based on Martin's) or run `tslint --init`
+- install prettier plugin on vscode
+- add a `.prettierignore` similar to the `.gitignore`
