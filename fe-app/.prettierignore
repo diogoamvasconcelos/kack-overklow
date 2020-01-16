@@ -1,4 +1,9 @@
 node_modules/
+build/
+
 .npm
 .cache/
 .vscode/
+
+package.json
+yarn.lock

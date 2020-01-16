@@ -38,3 +38,11 @@ yarn add tslint prettier --dev
 - add a `tslint.json` (based on Martin's) or run `tslint --init`
 - install prettier plugin on vscode
 - add a `.prettierignore` similar to the `.gitignore`
+
+## Install ant design library
+
+https://ant.design/docs/react/use-in-typescript
+
+```
+yarn add antd
+```
