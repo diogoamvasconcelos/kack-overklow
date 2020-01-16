@@ -27,3 +27,7 @@ edit the following:
 ## Add .gitignore
 
 copy one form internets about typescript/react/webapp
+
+## Add tslint and prettier
+
+- add `tslint.json`
