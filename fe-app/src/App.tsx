@@ -1,10 +1,12 @@
 import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
-const App: React.SFC = () => {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <p>OLA</p>
-    </div>
+    <BrowserRouter>
+      <Route path="/" component={Navbar} />
+    </BrowserRouter>
   );
 };
 
