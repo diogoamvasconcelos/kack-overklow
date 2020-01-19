@@ -46,3 +46,6 @@ https://ant.design/docs/react/use-in-typescript
 ```
 yarn add antd
 ```
+
+(keep in mind `imports` need a special syntax and add `antd css` to the base `App.tsx`)
+
