@@ -47,5 +47,15 @@ https://ant.design/docs/react/use-in-typescript
 yarn add antd
 ```
 
-(keep in mind `imports` need a special syntax and add `antd css` to the base `App.tsx`)
+The out of the box way to work with `antd` is not the easiest for imports.
 
+- `@import "antd/dist/antd.css";` in App.tsx to load the css
+- `import Layout from "antd/es/layout"; const { Footer } = Layout;` to import a Footer
+
+Use instead the `babel-plugin-import` to make it easier: https://github.com/ant-design/babel-plugin-import
+
+```
+yarn add babel-plugin-import --dev
+```
+
+and setup the .babelrc following: https://github.com/ant-design/parcel-antd

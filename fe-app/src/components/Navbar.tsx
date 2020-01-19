@@ -1,7 +1,5 @@
 import React from "react";
-import Button from "antd/es/button";
-import Input from "antd/es/input";
-import Layout from "antd/es/layout";
+import { Button, Input, Layout } from "antd";
 
 const { Search } = Input;
 const { Header } = Layout;
