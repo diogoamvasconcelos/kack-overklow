@@ -5,20 +5,19 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Layout } from "antd";
 
-const { Content } = Layout;
+import QuestionsList from "./components/QuestionsList";
 
 const App: React.FC = () => {
   return (
     <Layout className="layout">
       <Navbar />
-      <Content>
+      <Layout.Content>
         <BrowserRouter>
-          <Route path="/" component={() => <p>Content goes here...</p>} />
+          <Route path="/" component={QuestionsList} />
         </BrowserRouter>
-      </Content>
+      </Layout.Content>
       <Footer />
     </Layout>
   );
 };
-
 export default App;
