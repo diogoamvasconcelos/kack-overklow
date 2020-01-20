@@ -1,20 +1,35 @@
 import { Reducer } from "redux";
 
-import { QuestionListItemData } from "../types";
+import { AppThunk, QuestionListItemData } from "../types";
 
 export const Actions = {
   LIST_QUESTIONS: "LIST_QUESTIONS",
   LIST_QUESTIONS_SUCCESS: "LIST_QUESTIONS_SUCCESS"
 };
 
-export const actions = {
-  listQuestions: () => {
-    return { type: Actions.LIST_QUESTIONS };
-  },
+const syncActions = {
   listQuestionsSuccess: (items: listQuestionsSuccessPayload) => {
     return { type: Actions.LIST_QUESTIONS, payload: items };
   }
 };
+
+const asyncActions = {
+  listQuestions: () => (): AppThunk => async dispatch => {
+    const asyncResp = await exampleAsync();
+
+    dispatch(
+      syncActions.listQuestionsSuccess({
+        items: [{ ...initialState[0], title: asyncResp }]
+      })
+    );
+  }
+};
+
+const exampleAsync = () => {
+  return Promise.resolve("Async lala");
+};
+
+export const actions = { ...syncActions, ...asyncActions };
 
 type listQuestionsSuccessPayload = { items: QuestionListItemData[] };
 export type State = listQuestionsSuccessPayload;
@@ -45,9 +60,10 @@ const initialState: State = {
 };
 
 export const reducer: Reducer<State> = (state = initialState, action) => {
-  if (action.type == Actions.LIST_QUESTIONS_SUCCESS) {
-    return { ...state, ...action.payload };
+  switch (action.type) {
+    case Actions.LIST_QUESTIONS_SUCCESS:
+      return { ...state, ...action.payload };
+    default:
+      return state;
   }
-
-  return state;
 };

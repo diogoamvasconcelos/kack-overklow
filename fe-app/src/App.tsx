@@ -1,7 +1,8 @@
 import "./App.css";
 import React from "react";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -10,7 +11,7 @@ import { Layout } from "antd";
 import { reducer } from "./reducers";
 import QuestionsList from "./components/QuestionsList";
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 const App: React.FC = () => {
   return (

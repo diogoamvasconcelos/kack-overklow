@@ -1,6 +1,6 @@
 import React from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { List, Avatar, Icon } from "antd";
+import { List, Avatar, Icon, Button } from "antd";
 
 import { State } from "../../reducers";
 import { actions as QuestionsListActions } from "../../reducers/questionsList";
@@ -60,14 +60,22 @@ const QuestionList: React.FC<QuestionListProps> = ({ data }) => {
 };
 
 type ComponentProps = ConnectedProps<typeof connector>;
-const Component: React.FC<ComponentProps> = ({ questionsList }) => {
-  return <QuestionList data={questionsList.items} />;
+const Component: React.FC<ComponentProps> = ({
+  questionsList,
+  listQuestions
+}) => {
+  return (
+    <div>
+      <QuestionList data={questionsList.items} />
+      <Button onClick={listQuestions}>Update</Button>
+    </div>
+  );
 };
 
 const mapState = ({ questionsList }: State) => {
   return { questionsList };
 };
-const mapDispatch = { listQuestions: QuestionListItem };
+const mapDispatch = { listQuestions: QuestionsListActions.listQuestions };
 
 const connector = connect(mapState, mapDispatch);
 

@@ -6,6 +6,7 @@
         "libraryName": "antd",
         "libraryDirectory": "es"
       }
-    ]
+    ],
+    ["@babel/plugin-transform-runtime"]
   ]
 }

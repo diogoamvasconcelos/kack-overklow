@@ -62,9 +62,30 @@ and setup the .babelrc following: https://github.com/ant-design/parcel-antd
 
 ## Add redux
 
-nice tutorials: https://www.youtube.com/watch?v=OxIDLw0M-m0&list=PL4cUxeGkcC9ij8CfkAY2RAGb-tmkNwQHG
-and: https://redux.js.org/recipes/usage-with-typescript/
+- nice tutorials: https://www.youtube.com/watch?v=OxIDLw0M-m0&list=PL4cUxeGkcC9ij8CfkAY2RAGb-tmkNwQHG
+- and: https://redux.js.org/recipes/usage-with-typescript/
 
 ```
 yarn add redux react-redux
+yarn add @types/react-redux --dev
+```
+
+## Add async/await support
+
+- it doesnt work out of the box: https://github.com/parcel-bundler/parcel/issues/2442
+- use the `https://babeljs.io/docs/en/babel-plugin-transform-runtime`
+
+```
+yarn add @babel/plugin-transform-runtime --dev
+yarn add @babel/runtime
+```
+
+## Add redux-thunk
+
+- Async actions - http requests
+- https://github.com/reduxjs/redux-thunk and https://redux.js.org/recipes/usage-with-typescript/
+- quick tut: https://www.youtube.com/watch?v=apg98RIJfJo&list=PL4cUxeGkcC9iWstfXntcj8f-dFZ4UtlN3&index=14
+
+```
+yarn add redux-thunk
 ```
