@@ -1,28 +1,12 @@
 import React from "react";
+import { connect, ConnectedProps } from "react-redux";
 import { List, Avatar, Icon } from "antd";
 
-type QuestionListItemData = {
-  id: string;
-  href: string;
-  title: string;
-  tags: string;
-  description: string;
-  author: string;
-  authorAvatar: string;
-};
+import { State } from "../../reducers";
+import { actions as QuestionsListActions } from "../../reducers/questionsList";
+import { QuestionListItemData } from "../../types";
 
-const MockData: QuestionListItemData[] = [
-  {
-    id: "0",
-    href: "diogovasconcelos.com",
-    title: "Question 1",
-    tags: "Typescript",
-    description: "Very nice question",
-    author: "Diogo",
-    authorAvatar:
-      "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-  }
-];
+const MockData: QuestionListItemData[] = [];
 
 type IconTextProps = { icon: string; text: string };
 const IconText: React.FC<IconTextProps> = ({ icon, text }) => (
@@ -75,8 +59,16 @@ const QuestionList: React.FC<QuestionListProps> = ({ data }) => {
   );
 };
 
-const Component: React.FC = () => {
-  return <QuestionList data={MockData} />;
+type ComponentProps = ConnectedProps<typeof connector>;
+const Component: React.FC<ComponentProps> = ({ questionsList }) => {
+  return <QuestionList data={questionsList.items} />;
 };
 
-export default Component;
+const mapState = ({ questionsList }: State) => {
+  return { questionsList };
+};
+const mapDispatch = { listQuestions: QuestionListItem };
+
+const connector = connect(mapState, mapDispatch);
+
+export default connector(Component);
