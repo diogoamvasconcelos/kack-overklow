@@ -34,11 +34,12 @@ const IconText: React.FC<IconTextProps> = ({ icon, text }) => (
 
 const ListFooter: React.FC = () => (
   <div>
-    <b>Questions</b>
+    <b>Questions Questions</b>
   </div>
 );
 
-const RenderListItem = (item: QuestionListItemData) => (
+type QuestionListItemProps = { item: QuestionListItemData };
+const QuestionListItem: React.FC<QuestionListItemProps> = ({ item }) => (
   <List.Item
     key={item.id}
     actions={[
@@ -49,7 +50,7 @@ const RenderListItem = (item: QuestionListItemData) => (
   >
     <List.Item.Meta
       avatar={<Avatar src={item.authorAvatar} />}
-      title={<a ref={item.href}>{item.title}</a>}
+      title={<a href={item.href}>{item.title}</a>}
       description={item.tags}
     />
     {item.description}
@@ -66,8 +67,10 @@ const QuestionList: React.FC<QuestionListProps> = ({ data }) => {
       size="large"
       pagination={{ onChange: page => console.log(page), pageSize: 3 }}
       dataSource={data}
-      footer={ListFooter}
-      renderItem={RenderListItem}
+      footer={<ListFooter />}
+      renderItem={(item: QuestionListItemData) => (
+        <QuestionListItem item={item} />
+      )}
     />
   );
 };
