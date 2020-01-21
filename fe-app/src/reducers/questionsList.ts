@@ -16,15 +16,8 @@ const syncActions = {
 
 const asyncActions = {
   listQuestions: (): AppThunk => async dispatch => {
-    const asyncResp = await fetch(
-      "https://jsonplaceholder.typicode.com/todos/1"
-    ).then(res => res.json());
-
-    dispatch(
-      syncActions.listQuestionsSuccess({
-        items: [{ ...initialState[0], title: asyncResp.title }]
-      })
-    );
+    const asyncResp = await fetchy("questions").then(res => res.json());
+    dispatch(syncActions.listQuestionsSuccess(asyncResp));
   }
 };
 
@@ -34,28 +27,7 @@ type listQuestionsSuccessPayload = { items: QuestionListItemData[] };
 export type State = listQuestionsSuccessPayload;
 
 const initialState: State = {
-  items: [
-    {
-      id: "0",
-      href: "diogovasconcelos.com",
-      title: "Question 1",
-      tags: "Typescript",
-      description: "Very nice question",
-      author: "Diogo",
-      authorAvatar:
-        "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-    },
-    {
-      id: "1",
-      href: "diogovasconcelos.com",
-      title: "Question 2",
-      tags: "Typescript",
-      description: "Very nice question too",
-      author: "Dio",
-      authorAvatar:
-        "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-    }
-  ]
+  items: []
 };
 
 export const reducer: Reducer<State> = (state = initialState, action) => {

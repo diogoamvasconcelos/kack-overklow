@@ -1,6 +1,6 @@
 import { uuid } from "uuidv4";
 
-const endpoint: string = "www.example.com";
+const endpoint: string = "http://localhost:8080";
 
 export type FetchOptions = RequestInit;
 

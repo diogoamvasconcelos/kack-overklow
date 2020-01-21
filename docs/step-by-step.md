@@ -105,3 +105,18 @@ yarn add redux-thunk
 - Local `nodejs` with `express`
 - https://github.com/TypeStrong/ts-node
 - https://github.com/expressjs/express
+
+- guide: https://developer.okta.com/blog/2018/11/15/node-express-typescript
+
+```
+yarn add ts-node express @types/node @types/express --dev
+```
+
+- Write a mock server script with express
+- Add a script to `package.json` to run it with ts-node: `yarn ts-node ./mock-be/index.ts`
+
+- add express `cors` middleware to enable all cors requests
+
+```
+yarn add cors --dev
+```
