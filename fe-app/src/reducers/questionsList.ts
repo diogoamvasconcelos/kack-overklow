@@ -9,14 +9,15 @@ export const Actions = {
 
 const syncActions = {
   listQuestionsSuccess: (items: listQuestionsSuccessPayload) => {
-    return { type: Actions.LIST_QUESTIONS, payload: items };
+    return { type: Actions.LIST_QUESTIONS_SUCCESS, payload: items };
   }
 };
 
 const asyncActions = {
   listQuestions: () => (): AppThunk => async dispatch => {
+    console.log("I will wait now");
     const asyncResp = await exampleAsync();
-
+    console.log("I waited on listQUestions");
     dispatch(
       syncActions.listQuestionsSuccess({
         items: [{ ...initialState[0], title: asyncResp }]
@@ -60,6 +61,7 @@ const initialState: State = {
 };
 
 export const reducer: Reducer<State> = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case Actions.LIST_QUESTIONS_SUCCESS:
       return { ...state, ...action.payload };

@@ -67,7 +67,14 @@ const Component: React.FC<ComponentProps> = ({
   return (
     <div>
       <QuestionList data={questionsList.items} />
-      <Button onClick={listQuestions}>Update</Button>
+      <Button
+        onClick={() => {
+          console.log("CLICKED");
+          listQuestions();
+        }}
+      >
+        Update
+      </Button>
     </div>
   );
 };
@@ -75,7 +82,9 @@ const Component: React.FC<ComponentProps> = ({
 const mapState = ({ questionsList }: State) => {
   return { questionsList };
 };
-const mapDispatch = { listQuestions: QuestionsListActions.listQuestions };
+const mapDispatch = {
+  listQuestions: QuestionsListActions.listQuestions()
+};
 
 const connector = connect(mapState, mapDispatch);
 

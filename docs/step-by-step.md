@@ -67,7 +67,13 @@ and setup the .babelrc following: https://github.com/ant-design/parcel-antd
 
 ```
 yarn add redux react-redux
-yarn add @types/react-redux --dev
+yarn add @types/react-redux --ddev
+```
+
+- to enable redux-devtools (browser) follow this: https://github.com/zalmoxisus/redux-devtools-extension#usage
+
+```
+yarn add redux-devtools-extension
 ```
 
 ## Add async/await support
