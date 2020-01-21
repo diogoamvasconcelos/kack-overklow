@@ -14,10 +14,8 @@ const syncActions = {
 };
 
 const asyncActions = {
-  listQuestions: () => (): AppThunk => async dispatch => {
-    console.log("I will wait now");
+  listQuestions: (): AppThunk => async dispatch => {
     const asyncResp = await exampleAsync();
-    console.log("I waited on listQUestions");
     dispatch(
       syncActions.listQuestionsSuccess({
         items: [{ ...initialState[0], title: asyncResp }]

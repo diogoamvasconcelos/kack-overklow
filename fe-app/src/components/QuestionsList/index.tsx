@@ -62,18 +62,25 @@ const QuestionList: React.FC<QuestionListProps> = ({ data }) => {
 type ComponentProps = ConnectedProps<typeof connector>;
 const Component: React.FC<ComponentProps> = ({
   questionsList,
-  listQuestions
+  listQuestions,
+  listQuestionsSuccess
 }) => {
   return (
     <div>
       <QuestionList data={questionsList.items} />
       <Button
         onClick={() => {
-          console.log("CLICKED");
           listQuestions();
         }}
       >
-        Update
+        Update Async
+      </Button>
+      <Button
+        onClick={() => {
+          listQuestionsSuccess({ items: [{ title: "Sync" }] });
+        }}
+      >
+        Update Sync
       </Button>
     </div>
   );
@@ -82,9 +89,21 @@ const Component: React.FC<ComponentProps> = ({
 const mapState = ({ questionsList }: State) => {
   return { questionsList };
 };
-const mapDispatch = {
-  listQuestions: QuestionsListActions.listQuestions()
+
+const mapDispatch = dispatch => {
+  return {
+    listQuestions: () => dispatch(QuestionsListActions.listQuestions()),
+    listQuestionsSuccess: obj =>
+      dispatch(QuestionsListActions.listQuestionsSuccess(obj))
+  };
 };
+
+/* shorted version of the above
+const mapDispatch = {
+  listQuestions: QuestionsListActions.listQuestions,
+  listQuestionsSuccess: obj => QuestionsListActions.listQuestionsSuccess(obj)
+};
+*/
 
 const connector = connect(mapState, mapDispatch);
 
