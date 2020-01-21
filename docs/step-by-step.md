@@ -95,3 +95,13 @@ yarn add @babel/runtime
 ```
 yarn add redux-thunk
 ```
+
+## HTTP Client
+
+- Using `fetch` - easier solution than the bloated clients like `axios` etc...
+
+## Mock server
+
+- Local `nodejs` with `express`
+- https://github.com/TypeStrong/ts-node
+- https://github.com/expressjs/express
