@@ -1,6 +1,7 @@
 import { Reducer } from "redux";
 
 import { AppThunk, QuestionListItemData } from "../types";
+import { fetchy } from "../utils/fetch";
 
 export const Actions = {
   LIST_QUESTIONS: "LIST_QUESTIONS",
@@ -15,17 +16,16 @@ const syncActions = {
 
 const asyncActions = {
   listQuestions: (): AppThunk => async dispatch => {
-    const asyncResp = await exampleAsync();
+    const asyncResp = await fetch(
+      "https://jsonplaceholder.typicode.com/todos/1"
+    ).then(res => res.json());
+
     dispatch(
       syncActions.listQuestionsSuccess({
-        items: [{ ...initialState[0], title: asyncResp }]
+        items: [{ ...initialState[0], title: asyncResp.title }]
       })
     );
   }
-};
-
-const exampleAsync = () => {
-  return Promise.resolve("Async lala");
 };
 
 export const actions = { ...syncActions, ...asyncActions };
