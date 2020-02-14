@@ -3,9 +3,10 @@
 ## Frontend
 
 * npm: package manager 
-* Parcel:  the web app bundler
+* Parcel: the web app bundler
 * React: web framework (with Redux)
-* Typescript: lala
+* Typescript
+* Ant Design: component library
 
 ## Backend
 
